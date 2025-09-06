@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Fruit & Number Analyzer</title>
+</head>
+<body>
+
+    <style>
+        body {
+           font-family: Arial, sans-serif;
+           background-color: #eef1f5;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 100vh;
+         }
+     
+         .container {
+           background: #fff;
+           padding: 30px;
+           border-radius: 10px;
+           box-shadow: 0 0 10px rgba(0,0,0,0.1);
+           width: 400px;
+         }
+     
+         input, button {
+           width: 100%;
+           margin: 10px 0;
+           padding: 10px;
+           font-size: 16px;
+         }
+     
+         .output {
+           margin-top: 20px;
+           white-space: pre-wrap;
+           background-color: #f7f7f7;
+           padding: 10px;
+           border-radius: 5px;
+           font-size: 15px;
+         }
+    </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Fruit & Number Analyzer</h2>
+
+    <input type="text" id="name" placeholder="Enter your name" />
+    <input type="number" id="number" placeholder="Enter a number" />
+    <input type="text" id="sentence" placeholder="Enter a short sentence" />
+    <input type="text" id="fruit1" placeholder="Favorite fruit 1" />
+    <input type="text" id="fruit2" placeholder="Favorite fruit 2" />
+    <input type="text" id="fruit3" placeholder="Favorite fruit 3" />
+    <button onclick="analyze()">Submit</button>
+
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    function greetUser(name) {
+      return "Hello, " + name + "!";
+    }
+
+    function analyze() {
+      const BASE_NUMBER = 5;
+      const name = document.getElementById("name").value;
+      const number = Number(document.getElementById("number").value);
+      const sentence = document.getElementById("sentence").value;
+
+      const fruit1 = document.getElementById("fruit1").value;
+      const fruit2 = document.getElementById("fruit2").value;
+      const fruit3 = document.getElementById("fruit3").value;
+      const fruits = [fruit1, fruit2, fruit3];
+
+      // Arithmetic
+      const sum = BASE_NUMBER + number;
+      const diff = BASE_NUMBER - number;
+      const product = BASE_NUMBER * number;
+      const quotient = number !== 0 ? (BASE_NUMBER / number).toFixed(2) : "Cannot divide by zero";
+
+      // String methods
+     
+      const upper = sentence.toUpperCase()
+      const lower = sentence.toLowerCase();
+
+      // If statement
+      let condition = "";
+      if (number > 0) {
+        condition = "Your number is positive.";
+      } else if (number < 0) {
+        condition = "Your number is negative.";
+      } else {
+        condition = "Your number is zero.";
+      }
+
+      // Ternary
+      const ternary = (number > 0) ? "positive" : (number < 0) ? "negative" : "zero";
+
+      // For loop
+      let countUp = "";
+      for (let i = 1; i <= number; i++) {
+        countUp += i + " ";
+      }
+
+      // While loop
+      let countDown = "";
+      let i = 5;
+      while (i > 0) {
+        countDown += i + " ";
+        i--;
+      }
+
+      // Output
+      const output = `
+${greetUser(name)}
+
+ Arithmetic:
+- Sum: ${sum}
+- Difference: ${diff}
+- Product: ${product}
+- Quotient: ${quotient}
+
+ String Methods:
+- Uppercase: ${upper}
+- Lowercase: ${lower}
+
+If Statement: ${condition}
+Ternary: Your number is ${ternary}
+
+For Loop (1 to ${number}): ${countUp}
+While Loop (countdown from 5): ${countDown}
+
+Favorite Fruits:
+- ${fruits.join("\n- ")}
+      `;
+
+      document.getElementById("output").innerText = output;
+    }
+    </script>
+</body>
+</html>

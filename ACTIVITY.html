@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const carBrand = [
+            {name: "Mustang", horsePower: 68},
+            {name: "Lamborghini", horsePower: 72},
+            {name: "Supra", horsePower: 90},
+            {name: "Gtr", horsePower: 85}
+        ];
+
+        carBrand.forEach(carBrand => {
+            console.log(`${carBrand.name} - HorsePower: ${carBrand.horsePower}`);
+        });
+
+        const passing = carBrand.filter(carBrand => carBrand.horsePower >= 85);
+        console.log(`Average of passed hp: ${JSON.stringify(passing)}`);
+
+        const names = carBrand.map(carBrand => carBrand.name);
+        console.log(`All Cars: ${names.join(", ")}`);
+
+        const average = carBrand.reduce((sum, carBrand) => sum + carBrand.horsePower, 0) / carBrand.length;
+        console.log(`Average HP: ${average}`);
+
+        const carBrandWithMethod = {
+            name: "RX-7", 
+            horsePower: 88, 
+            describe: function() {
+                console.log(`Your car is ${this.name} and the HP: ${this.horsePower}`);
+            }
+        };
+
+        carBrandWithMethod.describe();
+    </script>
+</body>
+</html>
